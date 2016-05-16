@@ -1,2 +1,2 @@
-LOG_FILE=/var/log/analytics/app-java.log 
-FREQUENCY=5000
+LOG_FILE=${LOGFILE:-/var/log/analytics/log1.log}
+FREQUENCY=${FREQUENCY:-5000}

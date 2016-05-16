@@ -19,5 +19,5 @@
 # Above generates logs between startTimeEpochMsec[1462460264502] till endTimeEpochMsec[1462460264502] with each log [5000]msec apart 
 # Here, startTimeEpochMsec is current time and endTimeEpochMsec = startTimeEpochMsec means logs will keep coming until stopped using ctrl+c
 #
-source config.sh
-java -cp data-generator-1.0-SNAPSHOT-jar-with-dependencies.jar com.wizni.DataGenerator ${LOG_FILE} ${FREQUENCY}
+. /config.sh
+java -cp datagenerator.jar com.wizni.DataGenerator ${LOG_FILE} ${FREQUENCY}
