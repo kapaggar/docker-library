@@ -1,0 +1,40 @@
+version: '2'
+services:
+ datagenerator1:
+  container_name: data-generator1
+  image: 'wizni/data-generator:v0.1'
+  environment:
+  - LOG_FILE:/var/log/analytics/log1.log
+  - FREQUENCY:5000
+  volumes:
+  - ./logs:/var/log/analytics/
+ datagenerator2:
+  container_name: data-generator2
+  image: 'wizni/data-generator:v0.1'
+  environment:
+  - LOG_FILE:/var/log/analytics/log2.log
+  - FREQUENCY:1000
+  volumes:
+  - ./logs:/var/log/analytics/
+ tdagent:
+  container_name: td-agent
+  image: 'wizni/td-agent:v0.1'
+  volumes:
+  - ./logs:/var/log/analytics/
+  - ./td-agent/td-agent.conf:/etc/td-agent/td-agent.conf
+  links:
+  - elasticsearch
+  depends_on:
+  - elasticsearch
+ elasticsearch:
+  container_name: elasticsearch
+  hostname: elasticsearch
+  image: 'wizni/elasticsearch:v0.1'
+ zeppelin:
+  container_name: zeppelin
+  image: 'wizni/zeppelin:v0.1'
+  ports:
+  - "8080:8080"
+  - "8081:8081"
+  links:
+  - elasticsearch
