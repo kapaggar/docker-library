@@ -1,7 +1,7 @@
 # wizni docker  Images
 
 
-## Architectures other than amd64?
+## OS other than ubuntu?
 
 Work is in-progress in the Docker Engine and Registry to properly support multiple OS
 

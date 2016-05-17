@@ -22,4 +22,5 @@ RUN /opt/td-agent/embedded/bin/fluent-gem install --no-ri --no-rdoc \
 # add conf
 ADD ./etc/fluentd /etc/fluentd
  
-CMD /etc/init.d/td-agent stop && /opt/td-agent/embedded/bin/fluentd -c /etc/fluentd/fluent.conf
+#CMD /etc/init.d/td-agent stop && /opt/td-agent/embedded/bin/fluentd -c /etc/fluentd/fluent.conf
+CMD /etc/init.d/td-agent stop && /usr/sbin/td-agent -c /etc/td-agent/td-agent.conf
