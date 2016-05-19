@@ -37,11 +37,13 @@ services:
   container_name: elasticsearch
   hostname: elasticsearch
   image: 'wizni/elasticsearch:v0.1'
+  volumes:
+  - ./esdata:/usr/share/elasticsearch/data
 
 # Zeppelin
  zeppelin:
   container_name: zeppelin
-  image: 'wizni/zeppelin:v0.1'
+  image: 'wizni/zeppelin:v0.2'
   ports:
   - "8080:8080"
   - "8081:8081"
