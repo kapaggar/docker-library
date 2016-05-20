@@ -14,8 +14,8 @@ RUN apt-get update \
 RUN mkdir -p /usr/share/maven \
   && curl -fsSL http://www.eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
   | tar -xzf - -C /usr/local/ \
-  && ln -sf /usr/local/apache-maven-$MAVEN_VERSION/bin/mvn /usr/local/bin/mvn  
+  && ln -sf /usr/local/apache-maven-$MAVEN_VERSION/bin/mvn /usr/local/bin/mvn
 
 ENV MAVEN_HOME /usr/local/
 WORKDIR /incubator-zeppelin
-CMD ["mvn","package","-DskipTests","-Pbuild-distr"]
+CMD mvn clean package -DskipTests -Pbuild-distr && mv /incubator-zeppelin/zeppelin-distribution/target/zeppelin*.tar.gz /snapshots/
