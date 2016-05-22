@@ -27,8 +27,6 @@ services:
   volumes:
   - ./logs:/var/log/analytics/
   - ./td-agent/td-agent.conf:/etc/td-agent/td-agent.conf
-  links:
-  - elasticsearch
   depends_on:
   - elasticsearch
 
@@ -43,9 +41,11 @@ services:
 # Zeppelin
  zeppelin:
   container_name: zeppelin
-  image: 'wizni/zeppelin:v0.2'
+  image: 'wizni/zeppelin:v0.1'
+  environment:
+  - ELASTICSEARCH_URL=http://elasticsearch:9200
   ports:
   - "8080:8080"
   - "8081:8081"
-  links:
+  depends_on:
   - elasticsearch
