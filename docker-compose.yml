@@ -3,7 +3,7 @@ services:
 # First Log Generator
  datagenerator1:
   container_name: data-generator1
-  image: 'wizni/data-generator:v0.1'
+  image: 'registry.gitlab.com/wizni/data-generator:master'
   environment:
   - LOG_FILE:/var/log/analytics/log1.log
   - FREQUENCY:5000
@@ -13,7 +13,7 @@ services:
 # Second Log Generator
  datagenerator2:
   container_name: data-generator2
-  image: 'wizni/data-generator:v0.1'
+  image: 'registry.gitlab.com/wizni/data-generator:master'
   environment:
   - LOG_FILE:/var/log/analytics/log2.log
   - FREQUENCY:1000
@@ -41,7 +41,7 @@ services:
 # Zeppelin
  zeppelin:
   container_name: zeppelin
-  image: 'wizni/zeppelin:v0.1'
+  image: 'registry.gitlab.com/wizni/zeppelin:0.6.0-wiz-1.0.0'
   environment:
   - ELASTICSEARCH_URL=http://elasticsearch:9200
   ports:
